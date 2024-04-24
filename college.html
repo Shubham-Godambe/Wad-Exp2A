@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>College Admin Dashboard</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Custom CSS -->
+  <style>
+    /* Sidebar styling */
+    .sidebar {
+      height: 100%;
+      width: 250px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #343a40;
+      padding-top: 20px;
+    }
+    /* Sidebar link styling */
+    .sidebar a, .sidebar select {
+      padding: 10px;
+      font-size: 18px;
+      color: #564f4f;
+      display: block;
+      text-decoration: none;
+      margin-bottom: 5px;
+    }
+    /* Sidebar link hover effect */
+    .sidebar a:hover {
+      background-color: #c99292;
+    }
+    /* Main content styling */
+    .content {
+      margin-left: 250px;
+      padding: 20px;
+    }
+    /* Chart container */
+    .chart-container {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+    /* Card styling */
+    .card {
+      width: 300px;
+      margin-bottom: 20px;
+      padding: 20px;
+      background-color: #c7b9b9;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <a href="#">Dashboard</a>
+    <select onchange="location = this.value;">
+      <option value="#" selected>Students</option>
+      <option value="#">Teachers</option>
+      <option value="#">Courses</option>
+    </select>
+    <a href="#">Settings</a>
+  </div>
+
+  <!-- Main content -->
+  <div class="content">
+    <h1>Dashboard</h1>
+    <!-- Cards: Total Students, Teachers, Courses -->
+    <div class="card-container">
+      <!-- Card 1: Total Students -->
+      <div class="card">
+        <h3>Total Students</h3>
+        <p>500</p>
+      </div>
+      <!-- Card 2: Total Teachers -->
+      <div class="card">
+        <h3>Total Teachers</h3>
+        <p>50</p>
+      </div>
+      <!-- Card 3: Total Courses -->
+      <div class="card">
+        <h3>Total Courses</h3>
+        <p>30</p>
+      </div>
+    </div>
+    <!-- Pie Chart: Gender Distribution -->
+    <div class="chart-container">
+      <canvas id="genderChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS (Optional, for some features like dropdowns) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    // Pie Chart Data
+    var genderData = {
+      labels: ['Male', 'Female'],
+      datasets: [{
+        data: [60, 40], // Sample data, replace with actual data
+        backgroundColor: ['#007bff', '#dc3545']
+      }]
+    };
+
+    // Gender Pie Chart Configuration
+    var genderConfig = {
+      type: 'pie',
+      data: genderData,
+      options: {
+        responsive: true,
+        legend: {
+          position: 'bottom'
+        }
+      }
+    };
+
+    // Render Gender Pie Chart
+    var genderChart = new Chart(document.getElementById('genderChart'), genderConfig);
+  </script>
+</body>
+</html>
